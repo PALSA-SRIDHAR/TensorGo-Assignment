@@ -7,8 +7,8 @@ passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser((id, done) => User.findById(id).then(user => done(null, user)));
 
 passport.use(new GoogleStrategy({
-  clientID: /*'183794321619-rpcp0mv3u3jk0h2krmidgil6nclh03g0.apps.googleusercontent.com'*/"",
-  clientSecret: /*'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'*/"",
+  clientID:'183794321619-rpcp0mv3u3jk0h2krmidgil6nclh03g0.apps.googleusercontent.com',
+  clientSecret:'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',
   callbackURL: '/auth/google/callback'
 }, async (accessToken, refreshToken, profile, done) => {
   let user = await User.findOne({ googleId: profile.id });
